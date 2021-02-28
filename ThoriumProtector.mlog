@@ -1,0 +1,9 @@
+set i 0
+getlink Reactor i
+sensor RHeat Reactor @heat
+jump 6 greaterThan RHeat 0.1
+control enabled Reactor 1 0 0 0
+jump 7 always  false
+control enabled Reactor 0 0 0 0
+op add i i 1
+jump 1 lessThan i @links
