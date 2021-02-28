@@ -1,0 +1,12 @@
+ubind @flare
+uradar player any any distance 0 1 approachTarget
+print approachTarget
+printflush message1
+jump 7 notEqual approachTarget null
+radar player any any distance @this 1 approachTarget
+jump 0 equal approachTarget null
+sensor x approachTarget @x
+sensor y approachTarget @y
+ucontrol approach x y 3 0 0
+ucontrol targetp approachTarget 1 0 0 0
+
