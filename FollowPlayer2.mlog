@@ -1,0 +1,18 @@
+sensor enabled switch1 @enabled
+jump 4 equal enabled true
+ubind @gamma
+end #up to this, check enabled and unbind all in not
+ubind @poly
+radar player any any distance @this 1 player
+jump 8 notEqual player null
+uradar player any any distance 0 1 player
+print player
+printflush message1
+jump 0 equal player null # if player is lost moves to last known position
+sensor x player @x
+sensor y player @y
+ucontrol approach x y 4 0 0
+sensor shootX player @shootX #shoot where player is shooting
+sensor shootY player @shootY
+sensor s player @shooting
+ucontrol target shootX shootY s 0 0

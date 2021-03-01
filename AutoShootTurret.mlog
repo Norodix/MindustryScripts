@@ -1,0 +1,21 @@
+sensor enabled switch1 @enabled
+jump 4 equal enabled true
+ubind @gamma
+end #up to this, check enabled and unbind all in not
+set i 0 #initialize counter
+jump 0 greaterThanEq i @links #if none of them see it start again "loop back 1"
+getlink turret i
+radar player any any distance turret 1 player
+jump 11 notEqual player null #JUMPCOUNTER!! if "player found", move on
+op add i i 1 #else increment
+jump 5 always #JUMPCOUNTER!! "loop back 1"
+sensor shootX player @shootX #Move here if "player found"
+sensor shootY player @shootY
+sensor s player @shooting
+jump 0 notEqual s true #if player is not shooting, automatic mode
+set i 0 #initialize counter
+jump 0 greaterThanEq i @links #loop through all turrets "loop back 2"
+getlink turret i
+control shoot turret shootX shootY s 0
+op add i i 1
+jump 16 always #JUMPCOUNTER!! "loop back 2"
