@@ -1,0 +1,12 @@
+sensor enabled switch1 @enabled
+jump 4 equal enabled true
+ubind @gamma
+end #up to this, check enabled and unbind all in not
+jump 6 notEqual @unit null
+ubind @poly
+ulocate damaged core true @copper outx outy found building
+jump 11 notEqual found true
+ucontrol targetp building building 0 0 0
+ucontrol approach outx outy 2 0 0
+end
+ucontrol approach @thisx @thisy 2 0 0

@@ -1,0 +1,16 @@
+sensor enabled switch1 @enabled
+jump 4 equal enabled true
+ubind @gamma
+end #check enable button, turn off all effects if not enabled
+set i 0 #loop through turrets
+jump 0 greaterThanEq i @links
+getlink turret i
+print turret
+printflush message1
+radar enemy flying any distance turret 1 flyingEnemy
+jump 13 equal flyingEnemy null
+control shootp turret flyingEnemy 1 0 0
+jump 14 always
+control shootp turret 0 0 0 0
+op add i i 1
+jump 5 always
